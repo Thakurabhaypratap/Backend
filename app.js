@@ -5,7 +5,7 @@ const PORT =process.env.PORT  || 3000;
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('Hello, World! Abhay Pratap SIngh UPDATED');
+  res.send('Hello, World! Abhay Pratap SIngh UPDATED update for EC2');
 });
 
 // Start server
