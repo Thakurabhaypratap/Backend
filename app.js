@@ -5,7 +5,7 @@ const PORT =process.env.PORT  || 3000;
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('test');
+  res.send('test and update');
 });
 
 // Start server
