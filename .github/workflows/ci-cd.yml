@@ -29,15 +29,3 @@ jobs:
 
     - name: Push Docker image to Docker Hub
       run: docker push abhaypratapsingh7704866570/backend:latest
-
-    - name: SSH into EC2 and deploy
-      uses: appleboy/ssh-action@v0.1.3
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ubuntu
-        key: ${{ secrets.EC2_SSH_KEY }}
-        port: 22
-        script: |
-          cd /home/ubuntu/backend
-          docker-compose pull
-          docker-compose up -d
