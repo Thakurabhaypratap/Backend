@@ -29,3 +29,16 @@ jobs:
 
     - name: Push Docker image to Docker Hub
       run: docker push abhaypratapsingh7704866570/backend:latest
+
+    - name: SSH to EC2 and deploy Docker container
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_KEY }}
+        port: ${{ secrets.EC2_PORT }}
+        script: |
+          docker pull abhaypratapsingh7704866570/backend:latest
+          docker stop backend || true
+          docker rm backend || true
+          docker run -d --name backend -p 80:3000 abhaypratapsingh7704866570/backend:latest
